@@ -13,7 +13,7 @@ image_config: &image_config
   # make sure you also add the values of your IMAGE_NAME & IMAGE_TAG variables
   # to the `test_image` job (line 55)
 
-  LINUX_VERSION: UBUNTU_TRUSTY DEBIAN_STRETCH
+  LINUX_VERSION: DEBIAN_STRETCH
 
   # RUBY_VERSION_NUM: # pick a version from https://cache.ruby-lang.org/pub/ruby
 
@@ -84,23 +84,17 @@ jobs:
       - run:
           name: Install PHP
           command: |
-            sudo apt-get install -y php7.3 php7.3-common php7.3-cli php7.3-intl
+            sudo apt-get install -y php7.3 php7.3-common php7.3-cli php7.3-curl php7.3-gd php7.3-intl php7.3-mbstring php7.3-sqlite3 php7.3-xml
             sudo apt-get install -y libpng-dev php-gd
             sudo docker-php-ext-install gd
 #            - php7.3-xdebug
 #            - php7.3-soap
 #            - php7.3-mysql
-#            - php7.3-sqlite3
-#            - php7.3-curl
 #            - php7.3-tidy
 #            - php7.3-readline
-#            - php7.3-gd
-#            - php7.3-mbstring
 #            - php7.3-opcache
 #            - php7.3-json
 #            - php7.3-zip
-#            - php7.3-xml
-#            - php7.3-tidy
 #            - php-apcu
 
       - store_test_results:
